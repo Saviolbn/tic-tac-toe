@@ -31,7 +31,7 @@ function App() {
 
     checkWinner(updatedBoard);
     setBoard(updatedBoard);
-    setPlaying(!playing)
+    setPlaying(!playing);
   }
   const checkWinner = (board) => {
     for (let i = 0; i < winner.length; i++) {

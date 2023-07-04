@@ -7,8 +7,9 @@ export const Box = ({ value, onClick }) => {
     return (
         <button
             className={style}
-            onClick={onClick}>
-            {value}
+            onClick={onClick}
+        >
+        {value}
         </button>
     )
 }
