@@ -5,7 +5,7 @@ import "./ScoreBoard.css"
 export const ScoreBoard = ({scores, playing}) => {
     const { xScore, oScore } = scores;
     return (
-        <div className="scoreboard">
+        <div className={`scoreboard ${playing}`}>
             <span>X - {xScore}</span>
             <span>O - {oScore}</span>
 

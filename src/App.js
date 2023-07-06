@@ -59,8 +59,8 @@ function App() {
   }
   return (
     <div className="App">
-      <Board board={board} onClick={boxCheck} />
-      <ScoreBoard scores={scores} playing={playing} />
+      <Board board={board} onClick={boxCheck} playing={playing}/>
+      <ScoreBoard scores={scores} playing={playing}/>
     </div>
   );
 }

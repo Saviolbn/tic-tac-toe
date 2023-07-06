@@ -1,0 +1,17 @@
+.scoreboard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 10em;
+    min-height: 1em;
+    font-size: 1.5em;
+    margin: 2rem auto;
+    border-radius: 10px;
+}
+.true{
+    background-color: pink;
+}
+.false{
+    background-color: lightblue;
+}
