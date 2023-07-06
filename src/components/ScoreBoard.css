@@ -8,10 +8,13 @@
     font-size: 1.5em;
     margin: 2rem auto;
     border-radius: 10px;
+    font-weight: bold;
 }
 .true{
     background-color: pink;
+    border: pink;
 }
 .false{
     background-color: lightblue;
+    border: blue;
 }

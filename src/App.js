@@ -21,6 +21,7 @@ function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [playing, setPlaying] = useState(true);
   const [scores, setScore] = useState({ xScore: 0, oScore: 0 })
+  const [gameOver, setGameOver] = useState(false)
 
   const boxCheck = (boxIdx) => {
     const updatedBoard = board.map((value, idx) => {
@@ -53,14 +54,21 @@ function App() {
     for (let i = 0; i < winner.length; i++) {
       const [x, y, z] = winner[i];
       if (board[x] && board[x] === board[y] && board[y] === board[z]) {
+        setGameOver(true)
         return board[x];
       }
     }
   }
+
+  const reset = () => {
+    setGameOver(false);
+    setBoard(Array(9).fill(null))
+  }
+
   return (
     <div className="App">
-      <Board board={board} onClick={boxCheck} playing={playing}/>
-      <ScoreBoard scores={scores} playing={playing}/>
+      <Board board={board} onClick={gameOver ? reset : boxCheck} playing={playing} />
+      <ScoreBoard scores={scores} playing={playing} />
     </div>
   );
 }
