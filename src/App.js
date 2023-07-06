@@ -22,10 +22,12 @@ function App() {
   const [playing, setPlaying] = useState(true);
   const [scores, setScore] = useState({ xScore: 0, oScore: 0 })
   const [gameOver, setGameOver] = useState(false)
+  const [cellChecked ,setCellChecked] = useState(0);
 
   const boxCheck = (boxIdx) => {
     const updatedBoard = board.map((value, idx) => {
       if (idx === boxIdx) {
+        setCellChecked(cellChecked + 1);
         return playing === true ? "X" : "O";
       } else {
         return value;
@@ -51,6 +53,7 @@ function App() {
     setPlaying(!playing);
   }
   const checkWinner = (board) => {
+    
     for (let i = 0; i < winner.length; i++) {
       const [x, y, z] = winner[i];
       if (board[x] && board[x] === board[y] && board[y] === board[z]) {
@@ -58,16 +61,22 @@ function App() {
         return board[x];
       }
     }
+    if (cellChecked === 8) {
+      setGameOver(true)
+    }
   }
 
   const reset = () => {
+    if (!gameOver) {
+      return
+    }
     setGameOver(false);
     setBoard(Array(9).fill(null))
   }
 
   return (
     <div className="App">
-      <Board board={board} onClick={gameOver ? reset : boxCheck} playing={playing} />
+      <Board board={board} onClick={boxCheck} playing={playing} onReset={reset} />
       <ScoreBoard scores={scores} playing={playing} />
     </div>
   );

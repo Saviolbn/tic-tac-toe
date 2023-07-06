@@ -1,15 +1,9 @@
-.board{
-    display: grid;
-    grid-template-columns: repeat(3, 6rem);
-    place-items: center;
-    justify-content: center;
-    width: fit-content;
-    margin: auto;
-    border-radius: 5%;
-}
-.true{
-    background-color: pink;
-}
-.false{
-    background-color: lightblue;
+.board {
+	display: grid;
+	grid-template-columns: repeat(3, 6rem);
+	place-items: center;
+	justify-content: center;
+	width: fit-content;
+	margin: auto;
+	border-radius: 5%;
 }
