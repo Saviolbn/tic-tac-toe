@@ -15,11 +15,11 @@
 
 
 
-.x {
+.box.x {
 	color: red;
 }
 
-.o {
+.box.o {
 	color: blue;
 }
 .box.true:hover {

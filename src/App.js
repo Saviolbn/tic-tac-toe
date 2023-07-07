@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { createElement, useState } from 'react';
 
 import './App.css';
 
@@ -23,6 +23,7 @@ function App() {
   const [scores, setScore] = useState({ xScore: 0, oScore: 0 })
   const [gameOver, setGameOver] = useState(false)
   const [cellChecked ,setCellChecked] = useState(0);
+  const [history, setHistory] = useState(Array());
 
   const boxCheck = (boxIdx) => {
     const updatedBoard = board.map((value, idx) => {
@@ -46,20 +47,25 @@ function App() {
         xScore += 1;
         setScore({ ...scores, xScore })
       }
+
       console.log(scores)
     }
 
     setBoard(updatedBoard);
     setPlaying(!playing);
   }
+
   const checkWinner = (board) => {
     
     for (let i = 0; i < winner.length; i++) {
       const [x, y, z] = winner[i];
       if (board[x] && board[x] === board[y] && board[y] === board[z]) {
         setGameOver(true)
+        setHistory([...history,scores])
+        //history.push(scores)
+        console.log(history)
         return board[x];
-      }
+        }
     }
     if (cellChecked === 8) {
       setGameOver(true)
@@ -77,7 +83,11 @@ function App() {
   return (
     <div className="App">
       <Board board={board} onClick={boxCheck} playing={playing} onReset={reset} />
+      {/* novo score */}
       <ScoreBoard scores={scores} playing={playing} />
+      {history.slice(0).reverse().map(past =>
+        <ScoreBoard key={``} scores={past} playing={playing} />
+      )}
     </div>
   );
 }
